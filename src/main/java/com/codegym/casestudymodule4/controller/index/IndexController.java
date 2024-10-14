@@ -21,4 +21,9 @@ public class IndexController {
         model.addAttribute("products", products);
         return "/index/index";
     }
+
+    @RequestMapping("/admin")
+    public String admin(Model model){
+        return "/admin/dist/index";
+    }
 }

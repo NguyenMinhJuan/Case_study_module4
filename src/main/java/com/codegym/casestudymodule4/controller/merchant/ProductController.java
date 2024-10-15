@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 @RequestMapping("/merchant/products")
@@ -22,7 +23,7 @@ public class ProductController {
 
     @GetMapping("/list")
     public String getProducts(Model model) {
-        List<Product> products = productService.findAll();
+        Iterable<Product> products = productService.findAll();
         model.addAttribute("products", products);
         return "/merchant/products/list";
     }
@@ -43,9 +44,9 @@ public class ProductController {
 
     @GetMapping("/edit/{id}")
     public String editProductForm(@PathVariable Long id, Model model) {
-        Product product = productService.findById(id);
-        if (product != null) {
-            model.addAttribute("product", product);
+        Optional<Product> optionalProduct= productService.findById(id);
+        if (optionalProduct != null) {
+            model.addAttribute("product", optionalProduct);
             return "merchant/products/edit";
         }
         return "redirect:/merchant/products"; // Redirect if not found
@@ -60,7 +61,7 @@ public class ProductController {
 
     @GetMapping("/delete/{id}")
     public String deleteProduct(@PathVariable Long id) {
-        productService.delete(id);
+        productService.remove(id);
         return "redirect:/merchant/products/list";
     }
 }

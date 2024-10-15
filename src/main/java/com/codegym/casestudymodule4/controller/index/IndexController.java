@@ -20,13 +20,9 @@ public class IndexController {
 
     @RequestMapping
     public String index(Model model) {
-        List<Product> products = productService.findAll();
+        Iterable<Product> products = productService.findAll();
         model.addAttribute("products", products);
         return "/index/index";
     }
 
-    @RequestMapping("/admin")
-    public String admin(Model model){
-        return "/admin/dist/index";
-    }
 }

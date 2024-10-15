@@ -5,8 +5,10 @@ import com.codegym.casestudymodule4.service.product.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.swing.plaf.PanelUI;
 import java.util.List;
 
 @Controller
@@ -14,6 +16,7 @@ import java.util.List;
 public class IndexController {
     @Autowired
     private ProductService productService;
+
 
     @RequestMapping
     public String index(Model model) {

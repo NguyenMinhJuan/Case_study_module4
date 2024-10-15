@@ -18,7 +18,7 @@
       });
 
     </script>
-    <title>Trưa nay ăn gì</title>
+    <title>Organic - Grocery Store HTML Website Template</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -144,30 +144,23 @@
           <li class="nav-item border-dashed active">
             <a href="index.html" class="nav-link d-flex align-items-center gap-3 text-dark p-2">
               <svg width="24" height="24" viewBox="0 0 24 24"><use xlink:href="#fruits"></use></svg>
-              <span>Fruits and vegetables</span>
+              <span>Foot</span>
             </a>
           </li>
           <li class="nav-item border-dashed">
             <button class="btn btn-toggle dropdown-toggle position-relative w-100 d-flex justify-content-between align-items-center text-dark p-2" data-bs-toggle="collapse" data-bs-target="#beverages-collapse" aria-expanded="false">
               <div class="d-flex gap-3">
                 <svg width="24" height="24" viewBox="0 0 24 24"><use xlink:href="#beverages"></use></svg>
-                <span>Beverages</span>
+                <span>Drink</span>
               </div>
             </button>
             <div class="collapse" id="beverages-collapse">
               <ul class="btn-toggle-nav list-unstyled fw-normal ps-5 pb-1">
-                <li class="border-bottom py-2"><a href="index.html" class="dropdown-item">Water</a></li>
                 <li class="border-bottom py-2"><a href="index.html" class="dropdown-item">Juice</a></li>
                 <li class="border-bottom py-2"><a href="index.html" class="dropdown-item">Soda</a></li>
                 <li class="border-bottom py-2"><a href="index.html" class="dropdown-item">Tea</a></li>
               </ul>
             </div>
-          </li>
-          <li class="nav-item border-dashed">
-            <a href="index.html" class="nav-link d-flex align-items-center gap-3 text-dark p-2">
-              <svg width="24" height="24" viewBox="0 0 24 24"><use xlink:href="#pet"></use></svg>
-              <span>Pet Food and Supplies</span>
-            </a>
           </li>
         </ul>
       
@@ -195,7 +188,9 @@
             <div class="search-bar row bg-light p-2 rounded-4">
               <div class="col-md-4 d-none d-md-block">
                 <select class="form-select border-0 bg-transparent">
-                  <option>Danh mục sản phẩm</option>
+                  <option>All Categories</option>
+                  <option>Foods</option>
+                  <option>Drinks</option>
                 </select>
               </div>
               <div class="col-11 col-md-7">
@@ -218,17 +213,10 @@
                 <a class="nav-link dropdown-toggle pe-3" role="button" id="pages" data-bs-toggle="dropdown" aria-expanded="false">Pages</a>
                 <ul class="dropdown-menu border-0 p-3 rounded-0 shadow" aria-labelledby="pages">
                   <li><a href="index.html" class="dropdown-item">About Us </a></li>
-                  <li><a href="index.html" class="dropdown-item">Shop </a></li>
-                  <li><a href="index.html" class="dropdown-item">Single Product </a></li>
                   <li><a href="index.html" class="dropdown-item">Cart </a></li>
-                  <li><a href="index.html" class="dropdown-item">Checkout </a></li>
-                  <li><a href="index.html" class="dropdown-item">Blog </a></li>
-                  <li><a href="index.html" class="dropdown-item">Single Post </a></li>
-                  <li><a href="index.html" class="dropdown-item">Styles </a></li>
                   <li><a href="index.html" class="dropdown-item">Contact </a></li>
                   <li><a href="index.html" class="dropdown-item">Thank You </a></li>
                   <li><a href="index.html" class="dropdown-item">My Account </a></li>
-                  <li><a href="index.html" class="dropdown-item">404 Error </a></li>
                 </ul>
               </li>
             </ul>
@@ -255,7 +243,7 @@
                 </a>
               </li>
               <li>
-                <a class="p-2 mx-1" th:href="@{/merchant/products/list}" aria-controls="offcanvasCart">
+                <a class="p-2 mx-1" th:href="@{/cart/items}" aria-controls="offcanvasCart">
                   <svg width="24" height="24"><use xlink:href="#shopping-bag"></use></svg>
                 </a>
               </li>
@@ -271,10 +259,10 @@
     <div class="container-lg">
         <div class="row">
           <div class="col-lg-6 pt-5 mt-5">
-            <h2 class="display-1 ls-1"><span class="fw-bold text-primary">Organic</span> Foods at your <span class="fw-bold">Doorsteps</span></h2>
-            <p class="fs-4">Dignissim massa diam elementum.</p>
+            <h2 class="display-1 ls-1"><span class="fw-bold text-primary">Organic</span> Cả ngày ăn gì? <span class="fw-bold">Ăn mọi lúc mọi nơi</span></h2>
+            <p class="fs-4">Sáng Trưa Chiều Tối.</p>
             <div class="d-flex gap-3">
-              <a href="#" class="btn btn-primary text-uppercase fs-6 rounded-pill px-4 py-3 mt-3">Start Shopping</a>
+              <a href="#" class="btn btn-primary text-uppercase fs-6 rounded-pill px-4 py-3 mt-3">Ăn thui!</a>
               <a href="#" class="btn btn-dark text-uppercase fs-6 rounded-pill px-4 py-3 mt-3">Join Now</a>
             </div>
             <div class="row my-5">
@@ -346,7 +334,7 @@
                 <div class="product-item d-flex flex-column align-items-center">
                   <figure>
                     <div>
-                      <img style="border-radius: 100% ;height: 180px;width: 180px" th:src="${p.getImageUrl()}" alt="Product Thumbnail" class="tab-image">
+                      <img style="height: 160px;width: 180px" th:src="${p.getImageUrl()}" alt="Product Thumbnail" class="tab-image">
                     </div>
                   </figure>
                   <h3 class="fs-6 fw-normal" th:text="${p.getName()}"></h3>
@@ -389,10 +377,10 @@
     <section class="py-4">
       <div class="container-lg">
         <h2 class="my-4">People are also looking for</h2>
-        <a href="#" class="btn btn-warning me-2 mb-2">Blue diamon almonds</a>
-        <a href="#" class="btn btn-warning me-2 mb-2">Angie’s Boomchickapop Corn</a>
-        <a href="#" class="btn btn-warning me-2 mb-2">Salty kettle Corn</a>
-        <a href="#" class="btn btn-warning me-2 mb-2">Chobani Greek Yogurt</a>
+        <a href="#" class="btn btn-warning me-2 mb-2">Trà chanh</a>
+        <a href="#" class="btn btn-warning me-2 mb-2">Pún pò</a>
+        <a href="#" class="btn btn-warning me-2 mb-2">Đồ chay</a>
+        <a href="#" class="btn btn-warning me-2 mb-2">Pít tết</a>
       </div>
     </section>
     <section class="py-5">
@@ -404,8 +392,8 @@
                 <svg width="32" height="32"><use xlink:href="#package"></use></svg>
               </div>
               <div class="card-body p-0">
-                <h5>Free delivery</h5>
-                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipi elit.</p>
+                <h5>Miễn phí giao hàng</h5>
+                <p class="card-text">Nhiều ưu đãi khủng, giảm giá phí vận chuyển đến 0đ</p>
               </div>
             </div>
           </div>
@@ -415,8 +403,8 @@
                 <svg width="32" height="32"><use xlink:href="#secure"></use></svg>
               </div>
               <div class="card-body p-0">
-                <h5>100% secure payment</h5>
-                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipi elit.</p>
+                <h5>Thanh toán an toàn</h5>
+                <p class="card-text">Bảo mật cao cấp</p>
               </div>
             </div>
           </div>
@@ -426,8 +414,8 @@
                 <svg width="32" height="32"><use xlink:href="#quality"></use></svg>
               </div>
               <div class="card-body p-0">
-                <h5>Quality guarantee</h5>
-                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipi elit.</p>
+                <h5>Đảm bảo chất lượng</h5>
+                <p class="card-text">Chất lượng đã được kiểm chứng</p>
               </div>
             </div>
           </div>
@@ -437,8 +425,8 @@
                 <svg width="32" height="32"><use xlink:href="#savings"></use></svg>
               </div>
               <div class="card-body p-0">
-                <h5>guaranteed savings</h5>
-                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipi elit.</p>
+                <h5>Tiết kiệm lớn</h5>
+                <p class="card-text">Giá rẻ đồ ngon</p>
               </div>
             </div>
           </div>
@@ -448,8 +436,8 @@
                 <svg width="32" height="32"><use xlink:href="#offers"></use></svg>
               </div>
               <div class="card-body p-0">
-                <h5>Daily offers</h5>
-                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipi elit.</p>
+                <h5>Ưu đãi hàng ngày</h5>
+                <p class="card-text">Nhiều mã giảm giá mỗi ngày</p>
               </div>
             </div>
           </div>

@@ -51,11 +51,11 @@ public class ProductController {
         return "redirect:/merchant/products"; // Redirect if not found
     }
 
-    @PostMapping("/update/{id}")
+    @GetMapping("/update/{id}")
     public String updateProduct(@PathVariable Long id, @ModelAttribute Product product) {
         product.setProductId(id);
         productService.save(product);
-        return "redirect:/merchant/products";
+        return "redirect:/merchant/products/list";
     }
 
     @GetMapping("/delete/{id}")

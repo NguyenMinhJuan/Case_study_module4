@@ -4,6 +4,8 @@ import com.codegym.casestudymodule4.model.ENUM.CartStatus;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.util.List;
+
 @Data
 @Entity
 @Table(name = "carts")
@@ -19,6 +21,7 @@ public class Cart {
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private CartStatus status;  // Active, Inactive
-
+    @OneToMany
+    private List<CartItem> items;
     // Getters and setters
 }

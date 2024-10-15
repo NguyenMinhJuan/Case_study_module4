@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class CartController {
     @RequestMapping("/items")
     public String cartItems(Model model) {
-        return "/merchant/products/list";
+
+        return "";
     }
 }

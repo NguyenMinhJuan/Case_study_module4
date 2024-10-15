@@ -334,7 +334,7 @@
                 <div class="product-item d-flex flex-column align-items-center">
                   <figure>
                     <div>
-                      <img style="border-radius: 50%;height: 180px;width: 180px" th:src="${p.getImageUrl()}" alt="Product Thumbnail" class="tab-image">
+                      <img style="border: 4px solid black; border-radius: 50%; height: 180px; width: 180px; box-shadow: 0 0 0 2px black;" th:src="${p.getImageUrl()}" alt="Product Thumbnail" class="tab-image">
                     </div>
                   </figure>
                   <h3 class="fs-6 fw-normal" th:text="${p.getName()}"></h3>

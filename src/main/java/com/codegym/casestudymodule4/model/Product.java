@@ -4,6 +4,10 @@ import com.codegym.casestudymodule4.model.ENUM.ProductStatus;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
 @Entity
 @Data
 @Table(name = "products")
@@ -16,6 +20,10 @@ public class Product {
     @JoinColumn(name = "merchant_id", nullable = false)
     private Merchant merchant;
 
+    @ManyToOne
+    @JoinColumn(name = "category_id", nullable = false)
+    private Category category;
+
     private String name;
 
     private String description;
@@ -27,5 +35,12 @@ public class Product {
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private ProductStatus status;  // Available, Unavailable
+    private ProductStatus status;
+
+    @Column(name = "is_promoted")
+    private boolean isPromoted;
+    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
+    private List<Coupon> coupons;
+    @ManyToMany(mappedBy = "products")
+    private Set<Order> orders = new HashSet<>();
 }

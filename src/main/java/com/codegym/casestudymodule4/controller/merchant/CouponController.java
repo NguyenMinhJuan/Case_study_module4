@@ -3,6 +3,7 @@ package com.codegym.casestudymodule4.controller.merchant;
 import com.codegym.casestudymodule4.model.Coupon;
 import com.codegym.casestudymodule4.model.Merchant;
 import com.codegym.casestudymodule4.service.coupon.CouponService;
+import com.codegym.casestudymodule4.service.coupon.ICouponService;
 import com.codegym.casestudymodule4.service.merchant.MerchantService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,19 +11,20 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 @RequestMapping("/merchant/coupons")
 public class CouponController {
 
     @Autowired
-    private CouponService couponService;
+    private ICouponService couponService;
     @Autowired
     MerchantService merchantService;
 
     @GetMapping
     public String getAllCoupons(Model model) {
-        List<Coupon> coupons = couponService.findAll();
+        Iterable<Coupon> coupons = couponService.findAll();
         model.addAttribute("coupons", coupons);
         return "merchant/coupons/list";
     }
@@ -43,9 +45,9 @@ public class CouponController {
 
     @GetMapping("/edit/{id}")
     public String editCouponForm(@PathVariable Long id, Model model) {
-        Coupon coupon = couponService.findById(id);
+        Optional< Coupon> coupon = couponService.findById(id);
         if (coupon != null) {
-            model.addAttribute("coupon", coupon);
+            model.addAttribute("coupon", coupon.get());
             return "merchant/coupons/edit";
         }
         return "redirect:/merchant/coupons";
@@ -60,7 +62,7 @@ public class CouponController {
 
     @GetMapping("/delete/{id}")
     public String deleteCoupon(@PathVariable Long id) {
-        couponService.delete(id);
+        couponService.remove(id);
         return "redirect:/merchant/coupons";
     }
 }

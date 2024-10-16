@@ -6,26 +6,37 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
-public class CouponService {
+public class CouponService implements ICouponService {
     @Autowired
     private CouponRepository couponRepository;
 
-    public List<Coupon> findAll() {
+
+    @Override
+    public Iterable<Coupon> findAll() {
         return couponRepository.findAll();
     }
 
-    public Coupon findById(Long id) {
-        return couponRepository.findById(id).orElse(null);
+    @Override
+    public Optional<Coupon> findById(Long id) {
+        return couponRepository.findById(id);
     }
 
+    @Override
     public Coupon save(Coupon coupon) {
         return couponRepository.save(coupon);
     }
 
-    public void delete(Long id) {
+    @Override
+    public void remove(Long id) {
         couponRepository.deleteById(id);
+    }
+
+    @Override
+    public List<Coupon> findByProductProductId(Long productId) {
+        return couponRepository.findByProductProductId(productId);
     }
 }
 

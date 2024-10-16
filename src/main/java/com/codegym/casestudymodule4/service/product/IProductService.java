@@ -13,4 +13,5 @@ public interface IProductService extends IGenerateService<Product> {
     Iterable<Product> findTop8ByIsPromotedTrue();
 
     List<ProductDTO> findTop8MostPurchasedProducts();
+    Iterable<Product> findByCategoryId(Long id);
 }

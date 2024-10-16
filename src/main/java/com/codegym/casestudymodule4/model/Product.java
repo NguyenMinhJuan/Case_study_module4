@@ -39,8 +39,14 @@ public class Product {
 
     @Column(name = "is_promoted")
     private boolean isPromoted;
-    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
-    private List<Coupon> coupons;
+    @ManyToMany
+    @JoinTable(
+            name = "product_coupon",
+            joinColumns = @JoinColumn(name = "product_id"),
+            inverseJoinColumns = @JoinColumn(name = "coupon_id")
+    )
+    private Set<Coupon> coupons = new HashSet<>();
+
     @ManyToMany(mappedBy = "products")
     private Set<Order> orders = new HashSet<>();
 }

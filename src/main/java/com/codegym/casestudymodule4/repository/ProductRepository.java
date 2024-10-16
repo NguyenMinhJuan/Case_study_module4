@@ -17,5 +17,6 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
     Iterable<Product> findTop8ByIsPromotedTrue();
     @Query(value = "CALL GetTop8MostPurchasedProducts()", nativeQuery = true)
     List<ProductDTO> findTop8MostPurchasedProducts();
+    Iterable<Product> findByCategoryId(Long id);
 
 }

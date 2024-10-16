@@ -5,6 +5,8 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Data
@@ -30,8 +32,6 @@ public class Coupon {
 
     @Column(name = "expiry_date")
     private LocalDate expiryDate;
-    @ManyToOne
-    @JoinColumn(name = "product_id", nullable = false)
-    private Product product;
-
+    @ManyToMany(mappedBy = "coupons")
+    private Set<Product> products = new HashSet<>();
 }

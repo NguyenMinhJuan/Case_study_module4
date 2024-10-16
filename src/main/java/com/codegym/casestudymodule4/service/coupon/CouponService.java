@@ -34,9 +34,6 @@ public class CouponService implements ICouponService {
         couponRepository.deleteById(id);
     }
 
-    @Override
-    public List<Coupon> findByProductProductId(Long productId) {
-        return couponRepository.findByProductProductId(productId);
-    }
+
 }
 

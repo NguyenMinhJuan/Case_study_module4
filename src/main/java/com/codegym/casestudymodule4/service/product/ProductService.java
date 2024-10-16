@@ -50,5 +50,11 @@ public class ProductService implements IProductService {
         return  productRepository.findTop8MostPurchasedProducts();
     }
 
+    @Override
+    public Iterable<Product> findByCategoryId(Long id) {
+        return productRepository.findByCategoryId(id);
+    }
+
+
 }
 

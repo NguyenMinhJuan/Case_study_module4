@@ -1,8 +1,11 @@
 package com.codegym.casestudymodule4.controller.index;
 
 import com.codegym.casestudymodule4.model.Product;
+import com.codegym.casestudymodule4.service.index.IndexService;
 import com.codegym.casestudymodule4.service.product.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -15,14 +18,11 @@ import java.util.List;
 @RequestMapping("/index")
 public class IndexController {
     @Autowired
-    private ProductService productService;
-
+    private IndexService indexService;
 
     @RequestMapping
-    public String index(Model model) {
-        Iterable<Product> products = productService.findAll();
-        model.addAttribute("products", products);
+    public String index(Model model,@PageableDefault(value = 6) Pageable pageable) {
+        model.addAttribute("products", indexService.findAll(pageable));
         return "/index/index";
     }
-
 }

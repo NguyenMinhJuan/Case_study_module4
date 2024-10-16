@@ -25,8 +25,4 @@ public class IndexController {
         return "/index/index";
     }
 
-    @RequestMapping("/admin")
-    public String admin(Model model){
-        return "/admin/dist/index";
-    }
 }

@@ -12,7 +12,10 @@ public class ProductService implements IProductService {
     @Autowired
     private ProductRepository productRepository;
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 83015446c138165b6d6d3a45812aca9aa5df62df
     @Override
     public Iterable<Product> findAll() {
         return productRepository.findAll();

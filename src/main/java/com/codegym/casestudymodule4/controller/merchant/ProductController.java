@@ -44,9 +44,15 @@ public class ProductController {
 
     @GetMapping("/edit/{id}")
     public String editProductForm(@PathVariable Long id, Model model) {
+<<<<<<< HEAD
         Optional<Product> product = productService.findById(id);
         if (product != null) {
             model.addAttribute("product", product);
+=======
+        Optional<Product> optionalProduct= productService.findById(id);
+        if (optionalProduct != null) {
+            model.addAttribute("product", optionalProduct);
+>>>>>>> 83015446c138165b6d6d3a45812aca9aa5df62df
             return "merchant/products/edit";
         }
         return "redirect:/merchant/products"; // Redirect if not found

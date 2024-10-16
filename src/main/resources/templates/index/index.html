@@ -336,7 +336,7 @@
                 <div class="product-item d-flex flex-column align-items-center">
                   <figure>
                     <div>
-                      <img style="height: 160px;width: 180px" th:src="${p.getImageUrl()}" alt="Product Thumbnail" class="tab-image">
+                      <img style="border: 4px solid black; border-radius: 50%; height: 180px; width: 180px; box-shadow: 0 0 0 2px black;" th:src="${p.getImageUrl()}" alt="Product Thumbnail" class="tab-image">
                     </div>
                   </figure>
                   <h3 class="fs-6 fw-normal" th:text="${p.getName()}"></h3>
@@ -385,7 +385,11 @@
 
     <section class="py-4">
       <div class="container-lg">
+<<<<<<< HEAD
         <h2 class="my-4">Được tìm kiếm nhiều</h2>
+=======
+        <h2 class="my-4">Mọi người cũng tìm</h2>
+>>>>>>> 83015446c138165b6d6d3a45812aca9aa5df62df
         <a href="#" class="btn btn-warning me-2 mb-2">Trà chanh</a>
         <a href="#" class="btn btn-warning me-2 mb-2">Pún pò</a>
         <a href="#" class="btn btn-warning me-2 mb-2">Đồ chay</a>

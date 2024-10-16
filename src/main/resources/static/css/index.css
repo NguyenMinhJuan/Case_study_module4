@@ -140,3 +140,31 @@ a.sidebar-link:hover {
     transform: rotate(45deg);
     transition: all .2s ease-out;
 }
+.product-list {
+    display: flex; /* Sử dụng flexbox cho danh sách sản phẩm */
+    flex-wrap: wrap; /* Cho phép xuống dòng */
+    gap: 15px; /* Khoảng cách giữa các sản phẩm */
+}
+
+.product-card {
+    display: flex;
+    flex-direction: column; /* Đặt chiều hướng thành cột */
+    align-items: center; /* Căn giữa hình ảnh và thông tin */
+    border: 1px solid #dee2e6;
+    border-radius: 5px;
+    padding: 10px;
+    background-color: #f8f9fa;
+    width: calc(25% - 15px); /* Đặt chiều rộng cho 4 sản phẩm trên mỗi hàng */
+    box-sizing: border-box; /* Đảm bảo padding và border nằm trong chiều rộng */
+}
+
+.product-image {
+    width: 100%; /* Độ rộng hình ảnh 100% */
+    height: auto; /* Tự động điều chỉnh chiều cao */
+    margin-bottom: 10px; /* Khoảng cách dưới hình ảnh */
+}
+
+.product-info {
+    flex-grow: 1; /* Để thông tin sản phẩm chiếm phần còn lại */
+    text-align: center; /* Căn giữa nội dung văn bản */
+}

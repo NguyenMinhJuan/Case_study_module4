@@ -12,5 +12,5 @@ public interface ProductDTO {
     Double getPrice();
     String getImageUrl();
     ProductStatus getStatus();
-    boolean isPromoted();  // Phương thức getter cho trường boolean
+    boolean isPromoted();
 }

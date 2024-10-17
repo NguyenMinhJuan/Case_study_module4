@@ -46,7 +46,8 @@ public class Product {
             inverseJoinColumns = @JoinColumn(name = "coupon_id")
     )
     private Set<Coupon> coupons = new HashSet<>();
-
     @ManyToMany(mappedBy = "products")
     private Set<Order> orders = new HashSet<>();
+    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private Set<Certification> certifications = new HashSet<>();
 }

@@ -20,7 +20,7 @@ public class Order {
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
-    @ManyToOne
+    @ManyToOne(optional = false)
     @JoinColumn(name = "merchant_id", nullable = false)
     private Merchant merchant;
 
@@ -41,5 +41,7 @@ public class Order {
             inverseJoinColumns = @JoinColumn(name = "product_id")
     )
     private Set<Product> products = new HashSet<>();
-    // Getters and setters
+
+    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<OrderItem> orderItems = new HashSet<>();
 }

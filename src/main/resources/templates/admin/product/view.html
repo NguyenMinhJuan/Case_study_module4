@@ -104,6 +104,35 @@
                         <p class="card-text"><strong>Mô Tả:</strong> <span th:text="${product.description}"></span></p>
                         <p class="card-text"><strong>Trạng Thái:</strong> <span th:text="${product.status}"></span></p>
                         <p class="card-text"><strong>Khuyến Mãi:</strong> <span th:text="${product.promoted ? 'Có' : 'Không'}"></span></p>
+
+                        <h6 class="mt-3">Mã Giảm Giá:</h6>
+                        <ul class="list-group">
+                            <li th:each="coupon : ${coupons}" class="list-group-item">
+                                <strong th:text="${coupon.getCode()}"></strong> - <span th:text="${coupon.getDiscountValue()}"></span> VND (HSD: <span th:text="${coupon.getExpiryDate()}"></span>)
+                            </li>
+                            <li th:if="${#lists.isEmpty(coupons)}" class="list-group-item">
+                                Không có mã giảm giá nào.
+                            </li>
+                        </ul>
+                        <h6 class="mt-3">Chứng Nhận VSATTP:</h6>
+                        <ul class="list-group">
+                            <li th:each="certification : ${certifications}" class="list-group-item">
+                                <strong th:text="${certification.certificationName}"></strong> -
+                                <span th:text="${certification.issueDate}"></span> (HSD: <span th:text="${certification.expiryDate}"></span>) -
+                                <span th:text="${certification.status}"></span>
+                            </li>
+                            <li th:if="${#lists.isEmpty(certifications)}" class="list-group-item">
+                                Không có chứng nhận nào.
+                            </li>
+                        </ul>
+                        <h6 class="mt-3">Đặt Hàng Ngay:</h6>
+                        <form th:action="@{/admin/products/{id}/addToCart(id=${product.productId})}" method="post">
+                            <div class="input-group mb-3">
+                                <input type="number" name="quantity" min="1" value="1" class="form-control" required />
+                                <button type="submit" class="btn btn-primary">Đặt hàng ngay</button>
+                            </div>
+                        </form>
+
                         <a th:href="@{/admin/products/list}" class="btn btn-secondary">Quay Lại Danh Sách</a>
                     </div>
                 </div>

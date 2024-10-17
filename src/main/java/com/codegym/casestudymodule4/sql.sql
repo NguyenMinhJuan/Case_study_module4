@@ -1,22 +1,15 @@
 use casec05;
-create
-    definer = root@localhost procedure GetTop8MostPurchasedProducts()
+CREATE PROCEDURE GetCouponsByProduct(IN productId BIGINT)
 BEGIN
     SELECT
-        p.product_id AS productId,
-        p.name AS name,
-        p.description AS description,
-        p.price AS price,
-        p.image_url AS imageUrl,
-        p.status AS status,
-        p.is_promoted AS isPromoted
+        c.code AS code,
+        c.discount_value AS discountValue,
+        c.expiry_date AS expiryDate
     FROM
-        products p
+        product_coupon pc
             JOIN
-        order_product op ON p.product_id = op.product_id
-    GROUP BY
-        p.product_id
-    ORDER BY
-        COUNT(op.order_id) DESC
-    LIMIT 8;
+        coupons c ON pc.coupon_id = c.coupon_id
+    WHERE
+        pc.product_id = productId;
 END;
+

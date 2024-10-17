@@ -1,9 +1,11 @@
 package com.codegym.casestudymodule4.service.product;
 
 import com.codegym.casestudymodule4.model.Coupon;
+import com.codegym.casestudymodule4.model.DTO.CouponDTO;
 import com.codegym.casestudymodule4.model.DTO.ProductDTO;
 import com.codegym.casestudymodule4.model.Product;
 import com.codegym.casestudymodule4.service.IGenerateService;
+import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 
@@ -14,4 +16,6 @@ public interface IProductService extends IGenerateService<Product> {
 
     List<ProductDTO> findTop8MostPurchasedProducts();
     Iterable<Product> findByCategoryId(Long id);
+    List<CouponDTO> getCouponsByProduct(Long productId);
+//    List<Product> findByCa
 }

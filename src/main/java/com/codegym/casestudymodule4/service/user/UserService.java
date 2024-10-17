@@ -58,7 +58,7 @@ public class UserService {
         return userRepository.save(existingUser);
     }
 
-    // Lấy thông tin người dùng hiện tại
+
     public User getCurrentUser() {
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         String username;
@@ -71,3 +71,4 @@ public class UserService {
                 .orElseThrow(() -> new IllegalArgumentException("User not found: " + username));
     }
 }
+

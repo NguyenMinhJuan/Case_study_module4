@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Giỏ Hàng</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="container mt-5">
+    <h1 class="text-center">Giỏ Hàng</h1>
+
+    <table class="table table-bordered mt-4">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>Tên Sản Phẩm</th>
+            <th>Số Lượng</th>
+            <th>Đơn Giá</th>
+            <th>Tổng</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="item, iterStat : ${orderItems}">
+            <td th:text="${iterStat.count}"></td>  <!-- Số thứ tự -->
+            <td th:text="${item.product.name}"></td>  <!-- Tên sản phẩm -->
+            <td th:text="${item.quantity}"></td>  <!-- Số lượng -->
+            <td th:text="${item.price} + ' VND'"></td>  <!-- Đơn giá -->
+            <td th:text="${item.price * item.quantity} + ' VND'"></td>  <!-- Tổng tiền -->
+        </tr>
+        </tbody>
+    </table>
+
+    <h4 class="text-end">Tổng Cộng: <span th:text="${totalAmount} + ' VND'"></span></h4>
+
+    <div class="text-center mt-4">
+        <a th:href="@{/admin/products/list}" class="btn btn-secondary">Tiếp Tục Mua Sắm</a>
+        <a th:href="@{/checkout}" class="btn btn-primary">Thanh Toán</a>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,6 +1,7 @@
 package com.codegym.casestudymodule4.service.product;
 
 import com.codegym.casestudymodule4.model.Coupon;
+import com.codegym.casestudymodule4.model.DTO.CouponDTO;
 import com.codegym.casestudymodule4.model.DTO.ProductDTO;
 import com.codegym.casestudymodule4.model.Product;
 import com.codegym.casestudymodule4.repository.ProductRepository;
@@ -53,6 +54,11 @@ public class ProductService implements IProductService {
     @Override
     public Iterable<Product> findByCategoryId(Long id) {
         return productRepository.findByCategoryId(id);
+    }
+
+    @Override
+    public List<CouponDTO> getCouponsByProduct(Long productId) {
+        return productRepository.getCouponsByProduct(productId);
     }
 
 

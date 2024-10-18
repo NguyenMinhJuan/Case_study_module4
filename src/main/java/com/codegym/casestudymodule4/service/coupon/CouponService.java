@@ -1,7 +1,7 @@
 package com.codegym.casestudymodule4.service.coupon;
 
 import com.codegym.casestudymodule4.model.Coupon;
-import com.codegym.casestudymodule4.repository.CouponRepository;
+import com.codegym.casestudymodule4.repository.ICouponRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,22 +10,22 @@ import java.util.List;
 @Service
 public class CouponService {
     @Autowired
-    private CouponRepository couponRepository;
+    private ICouponRepository ICouponRepository;
 
     public List<Coupon> findAll() {
-        return couponRepository.findAll();
+        return ICouponRepository.findAll();
     }
 
     public Coupon findById(Long id) {
-        return couponRepository.findById(id).orElse(null);
+        return ICouponRepository.findById(id).orElse(null);
     }
 
     public Coupon save(Coupon coupon) {
-        return couponRepository.save(coupon);
+        return ICouponRepository.save(coupon);
     }
 
     public void delete(Long id) {
-        couponRepository.deleteById(id);
+        ICouponRepository.deleteById(id);
     }
 }
 

@@ -3,6 +3,7 @@ package com.codegym.casestudymodule4.controller.index;
 import com.codegym.casestudymodule4.model.Product;
 import com.codegym.casestudymodule4.service.index.IndexService;
 import com.codegym.casestudymodule4.service.product.ProductService;
+import com.codegym.casestudymodule4.service.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;

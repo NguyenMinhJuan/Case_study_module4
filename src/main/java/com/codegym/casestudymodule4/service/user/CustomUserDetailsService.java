@@ -1,7 +1,7 @@
 package com.codegym.casestudymodule4.service.user;
 
 import com.codegym.casestudymodule4.model.User;
-import com.codegym.casestudymodule4.repository.UserRepository;
+import com.codegym.casestudymodule4.repository.IUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -13,11 +13,11 @@ import org.springframework.stereotype.Service;
 public class CustomUserDetailsService implements UserDetailsService {
 
     @Autowired
-    private UserRepository userRepository;
+    private IUserRepository IUserRepository;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user = userRepository.findByUsername(username)
+        User user = IUserRepository.findByUsername(username)
                 .orElseThrow(() -> new UsernameNotFoundException("User not found with username: " + username));
 
         // Thêm "ROLE_" vào trước mỗi role

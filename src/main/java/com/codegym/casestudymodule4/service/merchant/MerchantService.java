@@ -9,9 +9,9 @@ import java.util.List;
 @Service
 public class MerchantService {
     @Autowired
-    MerchantRepository merchantRepository;
+    IMerchantRepository IMerchantRepository;
 
     public List<Merchant> findAll() {
-        return (List<Merchant>) merchantRepository.findAll();
+        return (List<Merchant>) IMerchantRepository.findAll();
     }
 }

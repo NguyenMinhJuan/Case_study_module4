@@ -2,7 +2,7 @@ package com.codegym.casestudymodule4.service.user;
 
 import com.codegym.casestudymodule4.model.ENUM.ROLE;
 import com.codegym.casestudymodule4.model.User;
-import com.codegym.casestudymodule4.repository.UserRepository;
+import com.codegym.casestudymodule4.repository.IUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -12,23 +12,23 @@ import org.springframework.stereotype.Service;
 public class UserService {
 
     @Autowired
-    private UserRepository userRepository;
+    private IUserRepository IUserRepository;
 
     @Autowired
     private PasswordEncoder passwordEncoder;
 
     public User registerUser(User user) {
-        if (userRepository.findByUsername(user.getUsername()).isPresent()) {
+        if (IUserRepository.findByUsername(user.getUsername()).isPresent()) {
             throw new IllegalArgumentException("Tên đăng nhập đã tồn tại.");
         }
 
         // Kiểm tra xem email đã tồn tại chưa
-        if (userRepository.findByEmail(user.getEmail()).isPresent()) {
+        if (IUserRepository.findByEmail(user.getEmail()).isPresent()) {
             throw new IllegalArgumentException("Email đã tồn tại.");
         }
 
         // Kiểm tra xem số điện thoại đã tồn tại chưa
-        if (userRepository.findByPhoneNumber(user.getPhoneNumber()).isPresent()) {
+        if (IUserRepository.findByPhoneNumber(user.getPhoneNumber()).isPresent()) {
             throw new IllegalArgumentException("Số điện thoại đã tồn tại.");
         }
         // Mã hóa mật khẩu
@@ -43,7 +43,7 @@ public class UserService {
         user.setStatus(com.codegym.casestudymodule4.model.ENUM.AccountStatus.ACTIVE);
 
         // Lưu người dùng vào cơ sở dữ liệu
-        return userRepository.save(user);
+        return IUserRepository.save(user);
     }
 
     // Cập nhật thông tin người dùng
@@ -55,7 +55,7 @@ public class UserService {
         if (!updatedUser.getPassword().isEmpty()) {
             existingUser.setPassword(passwordEncoder.encode(updatedUser.getPassword()));  // Mã hóa mật khẩu mới nếu có
         }
-        return userRepository.save(existingUser);
+        return IUserRepository.save(existingUser);
     }
 
     // Lấy thông tin người dùng hiện tại
@@ -67,7 +67,7 @@ public class UserService {
         } else {
             username = principal.toString();
         }
-        return userRepository.findByUsername(username)
+        return IUserRepository.findByUsername(username)
                 .orElseThrow(() -> new IllegalArgumentException("User not found: " + username));
     }
 }
